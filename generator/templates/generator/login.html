@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TimeWise</title>
+    <link rel="stylesheet" href="{% static './style.css' %}">
+    <link rel="stylesheet" href="{% static './login-signup.css' %}">
+</head>
+<body>
+    <nav class="nav-bar">
+        <img src="{% static './images/logo.png' %}" class="logo">
+        <div class="nav-urls">
+            <div >
+                <a href="{% url 'generator:register' %}" class="link">Signup</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="img-card">
+                <img src="{% static './images/login-calendar.svg' %}" class="img">
+            </div>
+            <div class="card">
+
+                <div class="title-card">
+                    <p class="title">“ Time is Now Yours ”</p>
+                    <p class="line">Login and Generate Your Custom Timetable!</p>
+
+                </div>
+
+                <div class="input-card">
+                    <form action="" autocomplete="off" method="post">
+                        <div class="input large-input ipt-card">
+                            {% csrf_token %} {{form}}
+                        </div>
+                        <div class="login-card">
+                            <button id="next-btn" class="login">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

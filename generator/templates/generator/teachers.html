@@ -1,0 +1,204 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TimeWise</title>
+    <link rel="stylesheet" href="{% static './style.css' %}">
+</head>
+<body>
+    <nav class="nav-bar">
+        <img src="{% static './images/logo.png' %}" class="logo">
+        <div class="nav-urls">
+            <div class="sub-url">
+                <a href="{% url 'generator:home' %}">
+                    Classes
+                </a>
+            </div>
+            <div id="add-class" class="url-link">
+                Add Teacher
+            </div>
+            <a href="{% url 'generator:logout' %}">
+                <button class="logout">Logout</button>
+            </a>
+        </div>
+    </nav>
+
+    <main class="main" style="padding: 5rem; height: 50vh;">
+        {% for t in teachers %}
+        <section class="class">
+            <h2 class="class-name">
+                {{ t.name }}
+            </h2>
+            <div class="secondary-card">
+                
+                <div class="secondary-info">
+                    <div class="secondary-title">
+                        Timing :  
+                    </div>
+                    <div class="secondary-value">
+                        {{ t.start_time }} ⟶ {{ t.end_time }}
+                    </div>
+                </div>
+                <div class="secondary-info">
+                    <div class="secondary-title">
+                        Breaktime : 
+                    </div>
+                    <div class="secondary-value">
+                        {{ t.break_start }} ⟶ {{ t.break_end }}
+                    </div>
+                </div>
+            </div>
+            <div class="secondary-table">
+                    <div class="table-sub">
+                        Subjects
+                    </div>
+                    <div class="table-lec">
+                        Classes
+                    </div>
+                    <ul class="table-data-sub">
+                        {% for key1,value1 in classes.items %}
+
+                        {% if key1 == t.name %}
+            
+                         {% for s, j in value1.items %}
+                        <li>
+                                {{ s }} 
+                        </li>
+                        {% endfor %}
+                        {% endif %}
+
+
+                        {% endfor %}
+                    </ul>
+
+                    <ul class="table-data-lec">
+                        {% for key1,value1 in classes.items %}
+
+                        {% if key1 == t.name %}
+            
+                        <li>
+                         {% for s, j in value1.items %}
+                                {% for k in j %}
+                                <span style="background-color: beige; padding: .3rem;">{{ k }}</span>
+                                {% endfor %}
+                                {% endfor %}
+                            </li>
+                            {% endif %}
+
+
+                        {% endfor %}
+                    </ul>
+            </div>
+            
+        </section>
+        {% endfor %}
+
+
+       
+    </main>
+
+    <article id="modal-bg">
+        <div id="modal">
+            
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="form-header">
+                    <div class="input large-input" style="width: 100%; text-align: center; display: flex; align-items: center; justify-content: center;" >
+                        <input type="text" name="teachername" placeholder="Teacher Name" style="width: 80%; align-self: center;" data-placeholder="E-mail" >
+                    </div>
+                </div>
+
+
+                <div class="form-body">
+                    <div class="form-row">
+                        <div class="row-title">
+                            Timing :
+                        </div>
+                        <div class="input small-input">
+                            <input type="time" name="time-start" class="input-mat"  placeholder="Start" data-placeholder="E-mail" >
+                        </div>
+    
+                        <div class="input small-input">
+                            <input type="time" name="time-end" class="input-mat"  placeholder="End" data-placeholder="E-mail" >
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="row-title">
+                            Break Time :
+                        </div>
+                        <div class="input small-input">
+                            <input type="time" name="break-start" class="input-mat"  placeholder="Start" data-placeholder="E-mail" >
+                        </div>
+    
+                        <div class="input small-input">
+                            <input type="time" name="break-end" class="input-mat"  placeholder="End" data-placeholder="E-mail" >
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btns">
+                    <div class="btn">
+                        <button id="cancel-btn">Cancel</button>
+                    </div>
+
+                    <div class="btn">
+                        <button id="next-btn">Next</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div id="modal-2">
+
+            <form action="" method="post">
+                {% csrf_token %}
+               <h1>Select Subjects</h1>
+            <div class="group">
+                {% for classname, subjects in cxt.items %}
+                <div class="form-header">
+                    <div class="input large-input">
+                        {{classname}} :                         
+                    </div>
+                    <div class="input large-input">
+                            {% for subject in subjects %}
+                            <input type="checkbox" name="selected" id="{{classname}}-{{subject.name}}" value="{{classname}}-{{subject.name}}">
+                            <label for="{{classname}}-{{subject.name}}">{{subject.name}}</label>
+                            {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+
+                
+
+
+                           <div class="btns">
+                    <div class="btn">
+                        <button id="cancel-btn2">Cancel</button>
+                    </div>
+
+                    <div class="btn">
+                        <button id="save-btn">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>  
+    </article>
+    <script src="{% static './script.js' %}"></script>
+  <script>
+        var val = window.location.href.split("/")[window.location.href.split("/").length - 2];
+   console.log(val);
+    if(val == 2){
+document.querySelector("#modal-bg").style.display = "flex";
+document.querySelector("#modal").style.display = "none";    
+document.querySelector("#modal-2").style.display = "flex";    
+    }
+    </script>
+</body>
+</html>

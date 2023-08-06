@@ -1,0 +1,144 @@
+.link{
+    text-decoration: none;
+    color: #98BCF4;
+}
+
+.link:hover{
+    color: black;
+}
+
+main{
+    margin-top: 50px;
+    /* background-color: aqua; */
+    width: 100wh;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content:baseline;
+    align-items: center;
+}
+
+.container{
+    /* background-color: black; */
+    width: 80%;
+    height: 87%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.img-card{
+    /* background-color: #98BCF4; */
+    width: 40%;
+    height: 98%;
+    /* display: flex;
+    flex-direction: row;
+    justify-content: center; */
+}
+
+.img{
+    height: 90%;
+    /* background-color: antiquewhite; */
+}
+
+.card{
+    /* background-color: #27477b; */
+    width: 37%;
+    height: 98%;
+}
+
+.title-card{
+    /* background-color: aliceblue; */
+    display: flex;
+    flex-direction: column;
+    height: 25%;
+}
+
+.title{
+    font-weight: bold;
+    font-size: 28px;
+    /* background-color: aqua; */
+}
+
+.line{
+    margin-top: -15px;
+    font-size: 23px;
+    /* background-color: aquamarine; */
+}
+
+.input-card{
+    /* background-color: blueviolet; */
+    width: 100%;
+    height: 75%;
+}
+
+.input-card form{
+    height: 100%;
+}
+
+.ipt-card{
+    height: 70%;
+    width: 100%;
+    /* background-color: rgb(0, 255, 30); */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2.5rem;
+}
+
+.ipt{
+    width: 100% ;
+    height: 50px;
+}
+
+.sbt-card{
+    width: 100%;
+    /* background-color: azure; */
+    height: 60px;
+}
+
+.login-card{
+    width: 100%;
+    height: 30%;
+    /* background-color: chocolate; */
+    display: flex;
+    justify-content: flex-end;
+}
+
+.login{
+    padding: .5rem 1.5rem;
+    background-color: #98BCF4;
+    border-radius: 5px;
+    width: 140px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.login:hover{
+    color: white;
+}
+
+.input-card-signup{
+    /* background-color: blueviolet; */
+    width: 100%;
+    height: 100%;
+
+}
+
+.input-card-signup form{
+    height: 100%;
+}
+
+.ipt-card-signup{
+    height: 80%;
+    width: 100%;
+    /* background-color: rgb(0, 255, 30); */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2.5rem;
+}
